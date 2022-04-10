@@ -25,3 +25,14 @@ jobs:
       run: ls -l
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Pack Standalone
+      run: zip ./Team123it.Arcaea.MarveCube.Standalone/bin ./Team123it.Arcaea.MarveCube.Standalone.zip
+    - name: Pack main
+      run: zip ./Team123it.Arcaea.MarveCube/bin ./Team123it.Arcaea.MarveCube.zip
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          Team123it.Arcaea.MarveCube.zip
+          Team123it.Arcaea.MarveCube.Standalone.zip
+        
